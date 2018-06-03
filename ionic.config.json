@@ -1,0 +1,14 @@
+{
+  "name": "lak",
+  "app_id": "a424359b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://192.168.1.11:5051"
+    }
+  ]
+}

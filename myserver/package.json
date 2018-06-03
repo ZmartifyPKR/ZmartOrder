@@ -1,0 +1,16 @@
+{
+  "name": "myserver",
+  "version": "0.0.1",
+  "author": "Peter Kristensen",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "JSON": "^1.0.0",
+    "http": "^0.0.0",
+    "http-proxy": "^1.16.2",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "description": "Small proxy server for internetofthings.ibmcloud.com testing"
+}

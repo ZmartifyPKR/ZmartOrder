@@ -7,7 +7,7 @@ const logger = log.getLogger(CLASSNAME);
 
 export const IS_BROWSER = false;
 
-export const APPNAME = 'Lak';
+export const APPNAME = 'ZmartScan';
 export const NO_IMAGE = 'assets/img/no-image-lak.jpg';
 export const LOGLEVEL = 'error';
 
