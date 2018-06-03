@@ -1,0 +1,64 @@
+  <ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{'MENU_SETTINGS' | translate}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+
+  <form [formGroup]="form" *ngIf="settingsReady">
+    <ion-list *ngIf="page == 'main'">
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.NAME' | translate }}</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.ADDRESS1' | translate }}</ion-label>
+        <ion-input formControlName="address1"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.ADDRESS2' | translate }}</ion-label>
+        <ion-input formControlName="address2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.ZIPCODE' | translate }}</ion-label>
+        <ion-input formControlName="zipCode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.CITYNAME' | translate }}</ion-label>
+        <ion-input formControlName="cityName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.COUNTRY' | translate }}</ion-label>
+        <ion-input formControlName="country"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.CONTACTPERSON' | translate }}</ion-label>
+        <ion-input formControlName="contactPerson"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.TELEPHONE' | translate }}</ion-label>
+        <ion-input formControlName="telephone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.TELEPHONEALTERNATE' | translate }}</ion-label>
+        <ion-input formControlName="telephoneAlternate"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'SETTINGS.EMAIL' | translate }}</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-card align-center>
+      {{appVersion}}
+       by Zmartify 2018 - {{global.getDomain()}}
+    </ion-card>
+  </form>
+
+</ion-content>

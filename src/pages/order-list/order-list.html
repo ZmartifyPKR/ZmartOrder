@@ -1,0 +1,66 @@
+<!--
+  Generated template for the OrderListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{orderlistTypeMenu()}}</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="orderlistType" color="secondary">
+      <ion-segment-button value="today" (click)="loadOrders()">
+        <ion-icon name="clock"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="delayed" (click)="loadOrders()">
+        <ion-icon name="alert"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="delivered" (click)="loadOrders()">
+        <ion-icon name="archive"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="notdelivered" (click)="loadOrders()">
+        <ion-icon name="basket"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="images" (click)="loadOrders()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="order-content" padding>
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+      </div>
+  <ion-list>
+    <ion-card *ngFor="let order of orders">
+      <ion-row class="order-head-row" align-items-center>
+        <ion-col col-11>
+          <h2>{{order.productName}}</h2>
+        </ion-col>
+        <ion-col col-1 *ngIf="!order.deliveryDate">
+          <ion-icon name="trash" (click)="deleteOrder(order)"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="imageOrders" no-padding class="order-image-row">
+        <ion-col no-padding width-80>
+          <img class="order-image" [height]="125" src="{{order.image}}" title="IMAGE!">
+        </ion-col>
+      </ion-row>
+      <ion-row class="order-date-row" offset-2>
+        <ion-col col-9>
+          <p *ngIf="!imageOrders">{{order.productId}}</p>
+          <p *ngIf="order.deliveryDate; else nondelivered">{{'DELIVERY_DATE' | translate}} {{order.deliveryDate | date: "yyyy-MM-dd"}}</p>
+          <ng-template #nondelivered>{{'ORDER_DATE' | translate}} {{order.createdDate | date: "yyyy-MM-dd"}}</ng-template>
+        </ion-col>
+        <ion-col col-2 text-right>
+          {{order.quantity}}
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+</ion-content>

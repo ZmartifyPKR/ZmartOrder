@@ -1,0 +1,80 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+// http://ionicframework.com/docs/theming/
+page-root {
+    ion-menu {
+      .scroll-content {
+        overflow-y: hidden;
+      }
+    }
+    .menu {
+      text-align: center;
+      height: 100%;
+      .item {
+        display: table;
+        padding: 10px;
+        width: 100%;
+        ion-icon {
+          display: table-cell;
+          vertical-align: middle;
+          font-size: 7rem;
+          color: color($colors, light);
+        }
+        img {
+          display: table-cell;
+          vertical-align: middle;
+          border: 1px solid color($colors, stable);
+          border-radius: 100%;
+          width: 80px;
+          height: 80px;
+          margin: 0% auto;
+        }
+      }
+    }
+  }
+  
+  // Include Bourbon
+  $output-bourbon-deprecation-warnings: false;
+  @import "_bourbon";
+  // App Global Sass
+  // --------------------------------------------------
+  // Put style rules here that you want to apply globally. These
+  // styles are for the entire app and not just one component.
+  // Additionally, this file can be also used as an entry point
+  // to import other Sass files to be included in the output CSS.
+  //
+  // Shared Sass variables, which can be used to adjust Ionic's
+  // default Sass variables, belong in "theme/variables.scss".
+  //
+  // To declare rules for a specific mode, create a child rule
+  // for the .md, .ios, or .wp mode classes. The mode class is
+  // automatically applied to the <body> element in the app.
+  @import "../theme/common";
+  $app-direction: multi;
+  
+  button.mat-menu-item {
+      line-height: 24px !important;
+    }
+    a.mat-menu-item > mat-icon {
+      margin-bottom: 14px;
+    }
+    .mat-icon svg {
+      height: 24px;
+      width: 24px;
+    }
+  
+  

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{menuTitle | translate}}
+    </ion-title>
+    <ion-buttons end>
+    <button ion-button *ngIf="selectedProduct" (click)="clearProduct()">
+      <ion-icon name="close"></ion-icon>
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="place-order-content" padding>
+  <form [formGroup]="pagePlaceOrderForm">
+    <div *ngIf="!selectedProduct">
+      <ion-searchbar [(ngModel)]="searchTerm" formControlName="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+
+      <div *ngIf="searching" class="spinner-container">
+        <ion-spinner></ion-spinner>
+      </div>
+
+      <ion-list>
+        <ion-item *ngFor="let product of products" (click)="selectProduct(product)">
+          {{product.productName}}
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <span *ngIf="selectedProduct">
+      <div class="place-order-image-content">
+        <ion-row no-padding class="place-order-image-row">
+          <ion-col no-padding width-80>
+            <img class="place-order-image" [height]="275" [src]="DomSanitizer.bypassSecurityTrustUrl(imagePath)" title="IMAGE!">
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-grid class="place-order-data-content">
+        <ion-fab middle right>
+          <button ion-fab mini color="primary" (click)="addComments()">
+            <ion-icon name="create"></ion-icon>
+          </button>
+        </ion-fab>
+        <ion-row>
+          <ion-item>
+            <h2>{{selectedProduct.productName}}</h2>
+            <p>{{selectedProduct.productId}}</p>
+          </ion-item>
+        </ion-row>
+
+
+        <ion-item>
+          <ion-row>
+            <ion-col col-6>
+              <div class="quantity-row">{{'QUANTITY' | translate}}
+                <counter-input formControlName="quantity" [counterValue]="quantity" [min]="1" [step]="qtyStep"></counter-input>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-grid>
+      <ion-fab bottom right *ngIf="selectedProduct">
+        <button ion-fab color="favorite" (click)="confirmOrder()">
+          <ion-icon name="basket"></ion-icon>
+        </button>
+      </ion-fab>
+    </span>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-buttons *ngIf="!selectedProduct" padding end>
+      <button *ngIf="showTakePicture" ion-button icon-start align-items-right (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+        {{'TAKE_PICTURE' | translate}}
+      </button>
+      <button #clickScan id="clickScan" ion-button icon-start (click)="scanBarcode()">
+        <ion-icon name="eye"></ion-icon>
+        {{'SCAN_PRODUCT' | translate}}
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

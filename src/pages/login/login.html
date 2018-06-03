@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="splash-bg"></div>
+  <div class="splash-info">
+    <div class="splash-logo"></div>
+    <div class="splash-intro">
+      {{ 'WELCOME_INTRO' | translate }} version {{appversion}} - {{ appManager.deployChannel }}
+    </div>
+  </div>
+
+  <form (submit)="doLogin()">
+    <ion-list>
+      <!--
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+    -->
+    <ion-item>
+      <ion-label fixed>{{ 'DOMAIN' | translate }}</ion-label>
+      <ion-input autocapitalize="none" type="text" [(ngModel)]="domain" name="domain"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>{{ 'USERNAME' | translate }}</ion-label>
+      <ion-input autocapitalize="none" type="email" [(ngModel)]="account.username" name="username"></ion-input>
+    </ion-item>
+
+  <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input autocapitalize="none" type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>

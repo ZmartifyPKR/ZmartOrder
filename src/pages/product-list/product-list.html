@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{productlistTypeMenu()}}</ion-title>
+  </ion-navbar>
+  <ion-toolbar *ngIf="!directOrder" background="white">
+    <ion-segment [(ngModel)]="productlistType" color="primary">
+      <ion-segment-button value="allproducts" (click)="loadProducts()">
+        <ion-icon name="clock"></ion-icon>
+        {{productlistTypeText['allproducts']}}
+      </ion-segment-button>
+      <ion-segment-button value="lowstock" (click)="loadProducts()">
+        <ion-icon name="alert"></ion-icon>
+        {{productlistTypeText['lowstock']}}
+      </ion-segment-button>
+      <ion-segment-button value="stock" (click)="loadProducts()">
+        <ion-icon name="archive"></ion-icon>
+        {{productlistTypeText['stock']}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="pageProductListForm">
+    <ion-searchbar *ngIf="allProducts" [(ngModel)]="searchTerm" formControlName="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+    <div *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </div>
+    <ion-list *ngFor="let product of products" (click)="showProduct(product)">
+      <ion-item>
+        <ion-row>
+          <ion-col col-11>
+            <h2>{{product.productName}}</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-4>
+            <p>{{product.productId}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!directOrder">
+          <ion-col col-3>
+            <p>{{'STOCK_MIN' | translate}}</p>
+          </ion-col>
+          <ion-col col-2>
+            {{product.minimumStock}}
+          </ion-col>
+          <ion-col col-4>
+            <p>{{'STOCK_QTY' | translate}}</p>
+          </ion-col>
+          <ion-col col-3>
+            <div *ngIf="!lowStock(product); else stockIsLow" color="primary">
+              {{product.stockTransactionSumQty}}
+            </div>
+            <ng-template #stockIsLow color="secondary">
+              {{product.stockTransactionSumQty}}
+              <div *ngIf="justWarning(product); else stockAlert" color="secondary">
+                <ion-icon name="alert" color="yellow" small></ion-icon>
+              </div>
+              <ng-template #stockAlert>
+                <ion-icon name="alert" color="danger" small></ion-icon>
+              </ng-template>
+            </ng-template>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
