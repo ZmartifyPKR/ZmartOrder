@@ -1,6 +1,6 @@
 {
-  "name": "lak",
-  "app_id": "a424359b",
+  "name": "ZmartLak",
+  "app_id": "37bf4597",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

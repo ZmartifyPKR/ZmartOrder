@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.zmartify.app.zmartscan" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>lak</name>
+    <name>ZmartScan</name>
     <description>Zmartify lak app</description>
     <author email="peter@zmartify.dk" href="http://zmartify.dk/">Zmartify Development</author>
     <content src="index.html" />
