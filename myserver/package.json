@@ -12,5 +12,5 @@
     "http-proxy": "^1.16.2",
     "xmlhttprequest": "^1.8.0"
   },
-  "description": "Small proxy server for internetofthings.ibmcloud.com testing"
+  "description": "Small proxy server for testing"
 }

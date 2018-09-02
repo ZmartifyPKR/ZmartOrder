@@ -2,7 +2,7 @@
   "name": "zmartscan",
   "version": "1.2.0",
   "author": "Peter Kristensen",
-  "homepage": "http://zmartify.dk/",
+  "homepage": "http://zmartscan.dk/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

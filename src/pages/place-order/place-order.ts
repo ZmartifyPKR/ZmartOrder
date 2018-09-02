@@ -162,6 +162,7 @@ export class PlaceOrderPage {
   ionViewCanEnter(){
     if (!this.user.isAuthenticated()) this.navCtrl.setRoot('LoginPage');
   }
+
   addComments() {
     const METHOD = "addComments()";
 
@@ -406,6 +407,7 @@ export class PlaceOrderPage {
     this.quantity = 1;
     this.selectedProduct = undefined;
     this.pictureProduct = false;
+    this.comment = '';
   }
 
   buildToken(s: string): string {
