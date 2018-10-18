@@ -1,4 +1,4 @@
-import { GlobalProvider } from './../../providers/global/global';
+import { GlobalProvider, LOGLEVEL } from './../../providers/global/global';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
@@ -7,6 +7,10 @@ import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { appVersion } from '../../app/app.version';
 import { AppManagerProvider } from '../../providers/app-manager/app-manager';
+import log from 'loglevel';
+
+const CLASSNAME = '[LoginPage]';
+const logger = log.getLogger(CLASSNAME);
 
 @IonicPage()
 @Component({
@@ -38,6 +42,8 @@ export class LoginPage {
      public toastCtrl: ToastController,
     public translateService: TranslateService) {
 
+      logger.setLevel(LOGLEVEL);
+
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
@@ -54,9 +60,13 @@ export class LoginPage {
 
   // Attempt to login in through our User service
   doLogin() {
+    const METHOD = 'doLogin';
     this.global.setDomain(this.domain);
 
     this.user.login(this.account).then((resp) => {
+      this.translateService.use(this.user.language).subscribe(() => {
+        logger.info(CLASSNAME, METHOD, 'Language changed to: ', this.user.language);
+      })
       this.navCtrl.setRoot(MainPage);
     }, (err) => {
       // this.navCtrl.push(MainPage);

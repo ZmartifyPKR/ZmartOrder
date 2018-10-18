@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { SettingsPage } from './settings';
+import { createTranslateLoader } from '../../app/app.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,13 @@ import { SettingsPage } from './settings';
   ],
   imports: [
     IonicPageModule.forChild(SettingsPage),
-    TranslateModule.forChild()
+    TranslateModule.forChild({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: createTranslateLoader,
+          deps: [HttpClient]
+      }
+  })
   ],
   exports: [
     SettingsPage

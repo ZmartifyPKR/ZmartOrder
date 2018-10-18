@@ -5,11 +5,11 @@ import log from 'loglevel';
 const CLASSNAME = '[GlobalProvider]';
 const logger = log.getLogger(CLASSNAME);
 
-export const IS_BROWSER = false;
+export const IS_BROWSER = true;
 
 export const APPNAME = 'ZmartScan';
 export const NO_IMAGE = 'assets/img/no-image-scan.jpg';
-export const LOGLEVEL = 'error';
+export const LOGLEVEL = 'debug';
 
 export const DEFAULT_PREFERENCES = {
   quickScan: true

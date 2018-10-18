@@ -342,6 +342,7 @@ export class PlaceOrderPage {
         quantity: 1,
         product: {}
       });
+      this.quantity = 1;
       this.pictureProduct = true;
     }, (err) => {
       logger.error(CLASSNAME, err);

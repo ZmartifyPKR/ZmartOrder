@@ -129,6 +129,8 @@ export class User {
       }
       newUser.mobilePreferences = JSON.stringify(newPref);
 
+      console.log(JSON.stringify(newUser, null, 2));
+
       this.api.put('customers/customer/' + this._user.id + '/api/', newUser).subscribe((userDetails) => {
         this.setProfile(newUser);
         logger.debug(CLASSNAME, METHOD, "userPreferences updated", JSON.stringify(userDetails, null, 2));
@@ -150,6 +152,15 @@ export class User {
 
   get directOrder() {
     return this._user ? (this._user.dealMode == 'directorder') : true;
+  }
+
+  get language() {
+    return this._user.language;
+  }
+
+  set language(lang: string) {
+    const METHOD = 'set language';
+    logger.info(CLASSNAME,METHOD,'Language: ', lang);
   }
 
   /**

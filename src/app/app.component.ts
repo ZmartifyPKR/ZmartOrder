@@ -37,14 +37,14 @@ export class MyApp {
 
   rootPage = FirstRunPage;
 
-  defaultLanguage = 'da';
+  defaultLanguage = 'en';
 
   pages: any[] = [
-    { title: 'MENU_SCAN', component: 'PlaceOrderPage', menutype: ['direct', 'stock'] },
-    { title: 'MENU_ORDERS', component: 'OrderListPage', menutype: ['direct', 'stock'] },
-    { title: 'MENU_PRODUCTS', component: 'ProductListPage', menutype: ['direct', 'stock'] },
-    { title: 'MENU_STOCKLEVEL', component: 'PlaceOrderPage', menutype: ['stock'], params: { stockLevel: true } },
-    { title: 'MENU_SETTINGS', component: 'SettingsPage', menutype: ['direct', 'stock'] }
+    { titleCode: 'MENU_SCAN', title: '', component: 'PlaceOrderPage', menutype: ['direct', 'stock'] },
+    { titleCode: 'MENU_ORDERS', title: '', component: 'OrderListPage', menutype: ['direct', 'stock'] },
+    { titleCode: 'MENU_PRODUCTS', title: '', component: 'ProductListPage', menutype: ['direct', 'stock'] },
+    { titleCode: 'MENU_STOCKLEVEL', title: '', component: 'PlaceOrderPage', menutype: ['stock'], params: { stockLevel: true } },
+    { titleCode: 'MENU_SETTINGS', title: '', component: 'SettingsPage', menutype: ['direct', 'stock'] }
   ]
 
   constructor(
@@ -72,7 +72,7 @@ export class MyApp {
       }
 
       Observable.forkJoin(
-        this.pages.map((page, index) => this.translate.get(page.title))
+        this.pages.map((page, index) => this.translate.get(page.titleCode))
       ).subscribe((data): any => {
         data.forEach((newTitle, index) => {
           this.pages[index].title = newTitle

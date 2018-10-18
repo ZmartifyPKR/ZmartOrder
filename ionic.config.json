@@ -1,14 +1,14 @@
 {
   "name": "ZmartScan",
-  "app_id": "37bf4597",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
   },
+  "type": "ionic-angular",
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://192.168.1.11:5051"
+      "proxyUrl": "http://127.0.0.1:5051"
     }
-  ]
+  ],
+  "pro_id": "37bf4597"
 }
