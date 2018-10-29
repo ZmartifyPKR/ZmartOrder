@@ -1,5 +1,5 @@
 {
-  "name": "zmartscan",
+  "name": "zmartorder",
   "version": "1.2.1",
   "author": "Peter Kristensen",
   "homepage": "http://zmartscan.dk/",
@@ -80,7 +80,7 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-ionic": {
-        "APP_ID": "37bf4597",
+        "APP_ID": "6377d259",
         "CHANNEL_NAME": "master",
         "UPDATE_METHOD": "background",
         "MAX_STORE": "2",

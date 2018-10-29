@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.zmartify.app.lak" version="1.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ZmartScan</name>
-    <description>Zmartify lak app</description>
+<widget id="com.zmartify.app.zmartorder" version="1.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ZmartOrder</name>
+    <description>Zmartify order app</description>
     <author email="peter@zmartify.dk" href="http://zmartify.dk/">Zmartify Development</author>
     <content src="index.html" />
     <access origin="*" />
