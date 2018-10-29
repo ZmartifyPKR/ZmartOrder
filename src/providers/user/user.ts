@@ -118,6 +118,8 @@ export class User {
 
   setSettings(settings: any) {
     const METHOD = "setSettings()";
+    return; // Local settings not possible!
+    /*
     this.api.get('customers/customer/' + this._user.id + '/api/').subscribe(currentUserDetails => {
       let newUser: any = currentUserDetails;
       let newPref = {};
@@ -129,8 +131,6 @@ export class User {
       }
       newUser.mobilePreferences = JSON.stringify(newPref);
 
-      console.log(JSON.stringify(newUser, null, 2));
-
       this.api.put('customers/customer/' + this._user.id + '/api/', newUser).subscribe((userDetails) => {
         this.setProfile(newUser);
         logger.debug(CLASSNAME, METHOD, "userPreferences updated", JSON.stringify(userDetails, null, 2));
@@ -140,6 +140,7 @@ export class User {
     },
       (err) => logger.error(CLASSNAME, METHOD, "unable to load update userdetails")
     );
+    */
   }
 
   get settings() {
