@@ -333,8 +333,8 @@ export class PlaceOrderPage {
     }).then((imageData) => {
       logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imageData, null, 2));
 
-      // this.imagePath = normalizeURL(imagePath);
-      this.imagePath = 'data:image/jpeg;base64,' + imageData;
+      this.imagePath = normalizeURL(imageData);
+      // this.imagePath = 'data:image/jpeg;base64,' + imageData;
       // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imagePath);
       // this.imagePath = 'cache/' + imagePath.substring(imagePath.lastIndexOf('/') + 1);
       // logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));

@@ -106,7 +106,6 @@ export class MyErrorHandler implements ErrorHandler {
     (isBrowser ? { provide: StatusBar, useClass: StatusBarMock } : StatusBar),
     (isBrowser ? { provide: FileTransfer, useClass: FileTransferMock } : FileTransfer),
     (isBrowser ? { provide: FileTransferObject, useClass: FileTransferObjectMock } : FileTransferObject),
-    // File,
 
     // Keep this to enable Ionic's runtime error handling during development
     IonicErrorHandler,
