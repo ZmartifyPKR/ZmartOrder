@@ -136,7 +136,7 @@ export class PlaceOrderPage {
     let product = this.navParams.get('product');
 
     if (product) {
-      logger.debug(CLASSNAME,'product',JSON.stringify(product,null,2));
+      logger.debug(CLASSNAME, 'product', JSON.stringify(product, null, 2));
       this.loadedAsModal = true;
       this.selectProduct(product);
     } else {
@@ -159,7 +159,7 @@ export class PlaceOrderPage {
     if (!this.user.isAuthenticated()) this.navCtrl.setRoot('LoginPage');
   }
 
-  ionViewCanEnter(){
+  ionViewCanEnter() {
     if (!this.user.isAuthenticated()) this.navCtrl.setRoot('LoginPage');
   }
 
@@ -298,17 +298,19 @@ export class PlaceOrderPage {
       product_not_found = values['PRODUCT_NOT_FOUND'];
     });
 
-    this.barcodeScanner.scan({ formats: 'DATA_MATRIX,UPC_E,UPC_A,EAN_8,EAN_13,CODE_128,CODE_39,CODE_93,CODABAR,ITF,RSS14,RSS_EXPANDED,PDF_417,AZTEC,MSI'}).then((barcodeData) => {
+    this.barcodeScanner.scan().then((barcodeData) => {
       if (barcodeData.cancelled) {
         logger.debug(CLASSNAME, METHOD, "Cancelled");
         this.continueBarCode = false;
       } else {
         logger.debug(CLASSNAME, METHOD, JSON.stringify(barcodeData, null, 2));
-        this.productsProvider.getProductByBarcode(barcodeData.text).then((product) => {
-          this.selectProduct(product);
-        },
-          (err) => this.presentToast(product_not_found)
-        );
+        if (barcodeData.format != 'QR_CODE') {
+          this.productsProvider.getProductByBarcode(barcodeData.text).then((product) => {
+            this.selectProduct(product);
+          },
+            (err) => this.presentToast(product_not_found)
+          );
+        }
         this.continueBarCode = true;
       }
     },
