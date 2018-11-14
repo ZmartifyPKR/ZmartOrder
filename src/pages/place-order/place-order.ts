@@ -92,7 +92,7 @@ export class PlaceOrderPage {
     public ordersProvider: OrdersProvider,
     public productsProvider: ProductsProvider,
     public translateService: TranslateService,
-    public DomSanitizer: DomSanitizer,
+    public domSanitizer: DomSanitizer,
     public global: GlobalProvider,
     private transfer: FileTransfer,
     fb: FormBuilder,
@@ -330,10 +330,11 @@ export class PlaceOrderPage {
       mediaType: this.camera.MediaType.PICTURE,
       targetWidth: 1024,
       targetHeight: 768
-    }).then((imagePath) => {
-      logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));
+    }).then((imageData) => {
+      logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imageData, null, 2));
 
-      this.imagePath = normalizeURL(imagePath);
+      // this.imagePath = normalizeURL(imagePath);
+      this.imagePath = 'data:image/jpeg;base64,' + imageData;
       // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imagePath);
       // this.imagePath = 'cache/' + imagePath.substring(imagePath.lastIndexOf('/') + 1);
       // logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));
@@ -342,12 +343,13 @@ export class PlaceOrderPage {
         customerProduct: this.user.getPictureProductId(),
         name: "Picture from mobile phone",
         productName: 'PRODUCT PICTURE',
-        image: imagePath,
+        image: normalizeURL(imageData),
         quantity: 1,
         product: {}
       });
       this.quantity = 1;
       this.pictureProduct = true;
+
     }, (err) => {
       logger.error(CLASSNAME, err);
     });
