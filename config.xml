@@ -6,14 +6,14 @@
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://localhost:8080/*" />
-    <allow-navigation href="file:///*/*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://djangobooster.com/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
+    <allow-navigation href="file:///*/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://djangobooster.com/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
         <string>need camera access to take picture of products for ordering</string>
     </edit-config>
@@ -100,6 +100,6 @@
         <variable name="APP_ID" value="6377d259" />
         <variable name="CHANNEL_NAME" value="Channel" />
     </plugin>
-    <engine name="ios" spec="~4.5.5" />
-    <engine name="android" spec="~6.3.0" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="^6.3.0" />
 </widget>
