@@ -81,7 +81,7 @@ export class LoginPage {
   }
 
   doRefresh(refresher) {
-    this.appManager.performAutomaticUpdate();
+    this.appManager.performManualUpdate();
     refresher.complete();
   }
 }

@@ -332,7 +332,9 @@ export class PlaceOrderPage {
       logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));
 
       this.imagePath = normalizeURL(imagePath);
+      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imagePath);
       // this.imagePath = 'cache/' + imagePath.substring(imagePath.lastIndexOf('/') + 1);
+      // logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));
 
       this.selectedProduct = new ProductModel({
         customerProduct: this.user.getPictureProductId(),

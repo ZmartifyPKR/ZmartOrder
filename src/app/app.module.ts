@@ -40,7 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-const IonicPro = Pro.init('a424359b',{
+const IonicPro = Pro.init('6377d259',{
   appVersion: appVersion
 })
 

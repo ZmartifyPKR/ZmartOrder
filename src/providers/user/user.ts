@@ -55,22 +55,22 @@ export class User {
     this._idToken = token;
     this.setStorageVariable('id_token', token);
   }
-
+/*
   private setAccessToken(token) {
     this._accessToken = token;
     this.setStorageVariable('access_token', token);
   }
-
+*/
   private setProfile(profile) {
     this._user = profile;
     this.setStorageVariable('profile', profile);
   }
-
+/*
   private setUserId(userId) {
     this._user.userId = userId;
     this.setStorageVariable('user_id', userId);
   }
-
+*/
   public isAuthenticated() {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return Date.now() < expiresAt;
@@ -117,7 +117,7 @@ export class User {
   }
 
   setSettings(settings: any) {
-    const METHOD = "setSettings()";
+    // const METHOD = "setSettings()";
     return; // Local settings not possible!
     /*
     this.api.get('customers/customer/' + this._user.id + '/api/').subscribe(currentUserDetails => {

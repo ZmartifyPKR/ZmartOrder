@@ -1,5 +1,5 @@
 {
-  "BACK_BUTTON_TEXT": "Back",
+  "BACK_BUTTON_TEXT": "Tilbage",
   "PAGES": "Menu",
   "DOMAIN": "Domæne",
   "NAME": "Navn",
@@ -16,7 +16,7 @@
   "WELCOME_INTRO": "ZmartOrder",
   "SETTINGS_PROFILE_BUTTON": "Ret profil",
   "SETTINGS_PAGE_PROFILE": "Ret profil",
-  "WELCOME_TITLE": "Velkommen",
+  "WELCOME_TITLE": "Velkomme ",
   "LOGIN_TITLE": "Log ind",
   "LOGIN_ERROR": "Kan ikke logge på. Check dine konto oplysninger og prøv igen.",
   "LOGIN_BUTTON": "Log ind",
@@ -67,7 +67,7 @@
   "UPLOAD_SUCCESS": "Billedet er overført",
   "UPLOAD_ERROR": "Billedet kunne ikke overføres",
   "SEARCH_TITLE": "Søg",
-  "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\"",
+  "SEARCH_PLACEHOLDER": "Søg i produkter, fx. \"Anders And\"",
   "SETTINGS": {
     "NAME": "Navn",
     "ADDRESS1": "Adresse",
