@@ -27,7 +27,7 @@ export class AppManagerProvider {
     } catch (err) {
       // We encountered an error.
       // Here's how we would log it to Ionic Pro Monitoring while also catching:
-      logger.error(CLASSNAME, METHOD, JSON.stringify(err, null, 2));
+      logger.error(CLASSNAME, METHOD, err, JSON.stringify(err, null, 2));
       Pro.monitoring.exception(err);
     }
   }

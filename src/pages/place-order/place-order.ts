@@ -20,6 +20,8 @@ import { User } from '../../providers/providers';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { FileTransferObject, FileTransfer } from '@ionic-native/file-transfer';
 
+
+
 /**
  * @author Peter Kristensen
  *
@@ -298,7 +300,7 @@ export class PlaceOrderPage {
       product_not_found = values['PRODUCT_NOT_FOUND'];
     });
 
-    this.barcodeScanner.scan().then((barcodeData) => {
+    this.barcodeScanner.scan({formats: 'EAN_8,EAN_13,CODE_128,CODE_39'}).then((barcodeData) => {
       if (barcodeData.cancelled) {
         logger.debug(CLASSNAME, METHOD, "Cancelled");
         this.continueBarCode = false;
@@ -332,8 +334,11 @@ export class PlaceOrderPage {
       targetHeight: 768
     }).then((imageData) => {
       logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imageData, null, 2));
-
       this.imagePath = normalizeURL(imageData);
+      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imageData);
+      // logger.debug(CLASSNAME, METHOD, 'hej', this.imagePath);
+      // this.imagePath = this.convertFileSrc(imageData);
+      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imageData);
       // this.imagePath = 'data:image/jpeg;base64,' + imageData;
       // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imagePath);
       // this.imagePath = 'cache/' + imagePath.substring(imagePath.lastIndexOf('/') + 1);
