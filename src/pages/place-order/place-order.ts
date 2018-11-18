@@ -19,6 +19,7 @@ import { counterRangeValidator } from '../../components/counter-input/counter-in
 import { User } from '../../providers/providers';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { FileTransferObject, FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 
 
@@ -91,6 +92,7 @@ export class PlaceOrderPage {
     private viewCtrl: ViewController,
     private barcodeScanner: BarcodeScanner,
     private camera: Camera,
+    private file: File,
     public ordersProvider: OrdersProvider,
     public productsProvider: ProductsProvider,
     public translateService: TranslateService,
@@ -300,19 +302,16 @@ export class PlaceOrderPage {
       product_not_found = values['PRODUCT_NOT_FOUND'];
     });
 
-    this.barcodeScanner.scan({formats: 'EAN_8,EAN_13,CODE_128,CODE_39'}).then((barcodeData) => {
+    this.barcodeScanner.scan({ formats: this.user.scanFormats }).then((barcodeData) => {
       if (barcodeData.cancelled) {
         logger.debug(CLASSNAME, METHOD, "Cancelled");
         this.continueBarCode = false;
       } else {
-        logger.debug(CLASSNAME, METHOD, JSON.stringify(barcodeData, null, 2));
-        if (barcodeData.format != 'QR_CODE') {
-          this.productsProvider.getProductByBarcode(barcodeData.text).then((product) => {
-            this.selectProduct(product);
-          },
-            (err) => this.presentToast(product_not_found)
-          );
-        }
+        this.productsProvider.getProductByBarcode(barcodeData.text).then((product) => {
+          this.selectProduct(product);
+        },
+          (err) => this.presentToast(product_not_found)
+        );
         this.continueBarCode = true;
       }
     },
@@ -322,7 +321,7 @@ export class PlaceOrderPage {
   }
 
   takePicture() {
-    const METHOD = "takePicture";
+    const METHOD = "takePicture()";
 
     this.camera.getPicture({
       quality: 100,
@@ -334,15 +333,12 @@ export class PlaceOrderPage {
       targetHeight: 768
     }).then((imageData) => {
       logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imageData, null, 2));
-      this.imagePath = normalizeURL(imageData);
-      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imageData);
-      // logger.debug(CLASSNAME, METHOD, 'hej', this.imagePath);
-      // this.imagePath = this.convertFileSrc(imageData);
-      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imageData);
-      // this.imagePath = 'data:image/jpeg;base64,' + imageData;
-      // this.imagePath = (<any>window).Ionic.WebView.convertFileSrc(imagePath);
-      // this.imagePath = 'cache/' + imagePath.substring(imagePath.lastIndexOf('/') + 1);
-      // logger.debug(CLASSNAME, METHOD, 'Picture taken: ', JSON.stringify(imagePath, null, 2));
+
+      // Use File to create the correct path for viewing
+      let filename = imageData.substring(imageData.lastIndexOf('/') + 1);
+      let path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
+      //then use the method reasDataURL  btw. var_picture is ur image variable
+      this.file.readAsDataURL(path, filename).then(res => this.imagePath = res);
 
       this.selectedProduct = new ProductModel({
         customerProduct: this.user.getPictureProductId(),

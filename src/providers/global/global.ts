@@ -12,6 +12,8 @@ export const NO_IMAGE = 'assets/img/no-image-scan.jpg';
 export const LOGLEVEL = 'info';
 
 export const DEFAULT_PREFERENCES = {
+  language: 'da',
+  scanFormats: 'EAN_8,EAN_13,CODE_128,CODE_39',
   quickScan: true
 }
 

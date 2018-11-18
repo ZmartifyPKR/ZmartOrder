@@ -19,7 +19,7 @@ const TOKEN_LIFETIME = 3600 * 24 * 7;
 
 @Injectable()
 export class User {
-  _user: any;
+  _user: any = {};
   _settings: any;
   _idToken: any;
   _accessToken: any;
@@ -84,6 +84,7 @@ export class User {
       return profile ? profile.name : '??';
     }
   }
+
 
   getProfile() {
     return this.getStorageVariable('profile');
@@ -155,6 +156,10 @@ export class User {
     return this._user ? (this._user.dealMode == 'directorder') : true;
   }
 
+  get scanFormats() {
+    return this._user.scanFormats ? this._user.scanFormats : DEFAULT_PREFERENCES.scanFormats;
+  }
+
   get language() {
     return this._user.language;
   }
@@ -178,7 +183,7 @@ export class User {
           this._loggedIn(res);
         } else if (res.token) {
 
-          logger.debug(CLASSNAME, "Idtoken received");
+          logger.debug(CLASSNAME, "IdToken received");
           this.setIdToken(res.token);
           // this.setAccessToken(res.token);
           const expiresAt = JSON.stringify((this._tokenLifeTime * 1000) + new Date().getTime());

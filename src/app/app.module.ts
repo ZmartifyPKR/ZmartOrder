@@ -4,6 +4,7 @@ import { ErrorHandler, Injectable, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
@@ -98,6 +99,7 @@ export class MyErrorHandler implements ErrorHandler {
       useClass: APIInterceptor,
       multi: true
     },
+    File,
     User,
     // Use mocks during development when running in browser, otherwise use native
     (isBrowser ? { provide: Camera, useClass: CameraMock } : Camera),

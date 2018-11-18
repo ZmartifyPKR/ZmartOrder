@@ -34,8 +34,8 @@
     <span *ngIf="selectedProduct">
       <div class="place-order-image-content">
         <ion-row no-padding class="place-order-image-row">
-          <ion-col no-padding width-80>
-            <img class="place-order-image" [height]="275" [src]="domSanitizer.bypassSecurityTrustUrl(imagePath)" title="Image">
+          <ion-col no-padding>
+            <img class="place-order-image" [height]="225" [src]="domSanitizer.bypassSecurityTrustUrl(imagePath)" title="{{imagePath}}}">
           </ion-col>
         </ion-row>
       </div>
