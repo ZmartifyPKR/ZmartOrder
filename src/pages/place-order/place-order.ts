@@ -393,6 +393,7 @@ export class PlaceOrderPage {
     fileTransfer.onProgress(progress => {
       this.progress = progress.lengthComputable ? progress.loaded / progress.total * 100 : -1;
       logger.debug(CLASSNAME, "Progress: ", this.progress);
+      this.presentToast('Progress: '+ this.progress,1000);
     })
 
     // Use the FileTransfer to upload the image
@@ -403,7 +404,7 @@ export class PlaceOrderPage {
     }, err => {
       logger.error(CLASSNAME, JSON.stringify(err, null, 2));
       this.loading.dismiss()
-      this.presentToast(JSON.stringify(err, null, 2));
+      this.presentToast(JSON.stringify(err, null, 2),9000);
       // this.presentToast(this.uploadError);
     });
   }
@@ -423,10 +424,10 @@ export class PlaceOrderPage {
     return 'JWT ' + s.replace(/"/g, '');
   }
 
-  presentToast(message) {
+  presentToast(message, time?: number) {
     let toast = this.toastCtrl.create({
       message: message,
-      duration: 9000,
+      duration: time ? time : 3000,
       position: 'top'
     })
     toast.present();
