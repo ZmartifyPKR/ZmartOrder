@@ -1,4 +1,4 @@
-import { GlobalProvider, NO_IMAGE } from './../../providers/global/global';
+import { GlobalProvider, NO_IMAGE, LOGLEVEL } from './../../providers/global/global';
 import { ProductsProvider } from './../../providers/products/products';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -30,7 +30,6 @@ import { File } from '@ionic-native/file';
 
 const CLASSNAME = '[PlaceOrderPage]';
 const logger = log.getLogger(CLASSNAME);
-const LOGLEVEL = 'debug';
 
 @IonicPage()
 @Component({
@@ -103,8 +102,6 @@ export class PlaceOrderPage {
     public user: User) {
 
     logger.setLevel(LOGLEVEL);
-
-
 
     this.stockLevel = this.navParams.get('stockLevel');
 
@@ -338,19 +335,21 @@ export class PlaceOrderPage {
       let filename = imageData.substring(imageData.lastIndexOf('/') + 1);
       let path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
       //then use the method reasDataURL  btw. var_picture is ur image variable
-      this.file.readAsDataURL(path, filename).then(res => this.imagePath = res);
+      this.file.readAsDataURL(path, filename).then(res => {
+        this.imagePath = res;
+      });
 
       this.selectedProduct = new ProductModel({
         customerProduct: this.user.getPictureProductId(),
         name: "Picture from mobile phone",
         productName: 'PRODUCT PICTURE',
-        image: 'http://localhost:8080/_file_/' + this.imagePath,
-        // image: normalizeURL(imageData),
+        image: normalizeURL(imageData),
         quantity: 1,
         product: {}
       });
       this.quantity = 1;
       this.pictureProduct = true;
+      this.presentToast('-> ' + this.selectedProduct.image);
 
     }, (err) => {
       logger.error(CLASSNAME, err);
@@ -404,7 +403,7 @@ export class PlaceOrderPage {
     }, err => {
       logger.error(CLASSNAME, JSON.stringify(err, null, 2));
       this.loading.dismiss()
-      this.presentToast(JSON.stringify(err,null,2));
+      this.presentToast(JSON.stringify(err, null, 2));
       // this.presentToast(this.uploadError);
     });
   }
