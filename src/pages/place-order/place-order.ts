@@ -403,7 +403,8 @@ export class PlaceOrderPage {
     }, err => {
       logger.error(CLASSNAME, JSON.stringify(err, null, 2));
       this.loading.dismiss()
-      this.presentToast(this.uploadError);
+      this.presentToast(JSON.stringify(err,null,2));
+      // this.presentToast(this.uploadError);
     });
   }
 
@@ -425,7 +426,7 @@ export class PlaceOrderPage {
   presentToast(message) {
     let toast = this.toastCtrl.create({
       message: message,
-      duration: 3000,
+      duration: 9000,
       position: 'top'
     })
     toast.present();
