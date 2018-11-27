@@ -344,7 +344,8 @@ export class PlaceOrderPage {
         customerProduct: this.user.getPictureProductId(),
         name: "Picture from mobile phone",
         productName: 'PRODUCT PICTURE',
-        image: normalizeURL(imageData),
+        image: 'http://localhost:8080/_file_/' + this.imagePath,
+        // image: normalizeURL(imageData),
         quantity: 1,
         product: {}
       });

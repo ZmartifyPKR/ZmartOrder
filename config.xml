@@ -8,6 +8,7 @@
     <allow-navigation href="http://localhost:8080/*" />
     <allow-navigation href="http://127.0.0.1:8080/*" />
     <allow-navigation href="file:///*/*" />
+    <allow-intent href="http://localhost:8080/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://djangobooster.com/*" />
     <allow-intent href="https://*/*" />
