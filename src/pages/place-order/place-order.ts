@@ -334,6 +334,8 @@ export class PlaceOrderPage {
       // Use File to create the correct path for viewing
       let filename = imageData.substring(imageData.lastIndexOf('/') + 1);
       let path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
+      logger.debug(CLASSNAME,METHOD,filename);
+      logger.debug(CLASSNAME,METHOD,path);
       //then use the method reasDataURL  btw. var_picture is ur image variable
       this.file.readAsDataURL(path, filename).then(res => {
         this.imagePath = res;
@@ -343,7 +345,7 @@ export class PlaceOrderPage {
         customerProduct: this.user.getPictureProductId(),
         name: "Picture from mobile phone",
         productName: 'PRODUCT PICTURE',
-        image: normalizeURL(imageData),
+        image: imageData,
         quantity: 1,
         product: {}
       });
