@@ -9,7 +9,7 @@ export const IS_BROWSER = false;
 
 export const APPNAME = 'ZmartOrder';
 export const NO_IMAGE = 'assets/img/no-image-scan.jpg';
-export const LOGLEVEL = 'debug';
+export const LOGLEVEL = 'info';
 
 export const DEFAULT_PREFERENCES = {
   language: 'da',

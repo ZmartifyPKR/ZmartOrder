@@ -3,7 +3,7 @@ import { ProductsProvider } from './../../providers/products/products';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, normalizeURL, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, ViewController } from 'ionic-angular';
 import { OrdersProvider } from '../../providers/orders/orders';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Camera } from '@ionic-native/camera';
@@ -334,8 +334,6 @@ export class PlaceOrderPage {
       // Use File to create the correct path for viewing
       let filename = imageData.substring(imageData.lastIndexOf('/') + 1);
       let path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
-      logger.debug(CLASSNAME,METHOD,filename);
-      logger.debug(CLASSNAME,METHOD,path);
       //then use the method reasDataURL  btw. var_picture is ur image variable
       this.file.readAsDataURL(path, filename).then(res => {
         this.imagePath = res;
@@ -351,7 +349,7 @@ export class PlaceOrderPage {
       });
       this.quantity = 1;
       this.pictureProduct = true;
-      this.presentToast('-> ' + this.selectedProduct.image);
+      // this.presentToast('-> ' + this.selectedProduct.image);
 
     }, (err) => {
       logger.error(CLASSNAME, err);
@@ -395,7 +393,6 @@ export class PlaceOrderPage {
     fileTransfer.onProgress(progress => {
       this.progress = progress.lengthComputable ? progress.loaded / progress.total * 100 : -1;
       logger.debug(CLASSNAME, "Progress: ", this.progress);
-      this.presentToast('Progress: '+ this.progress,1000);
     })
 
     // Use the FileTransfer to upload the image
@@ -406,8 +403,7 @@ export class PlaceOrderPage {
     }, err => {
       logger.error(CLASSNAME, JSON.stringify(err, null, 2));
       this.loading.dismiss()
-      this.presentToast(JSON.stringify(err, null, 2),9000);
-      // this.presentToast(this.uploadError);
+      this.presentToast(this.uploadError);
     });
   }
 

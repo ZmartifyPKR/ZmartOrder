@@ -112,5 +112,8 @@ export class SettingsPage {
     return APPNAME +' v' + appVersion;
   }
 
-
+  doRefresh(refresher) {
+    this.appManager.performManualUpdate();
+    refresher.complete();
+  }
 }
