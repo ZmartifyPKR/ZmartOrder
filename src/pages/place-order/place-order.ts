@@ -243,6 +243,8 @@ export class PlaceOrderPage {
         }
       )
     }
+    
+    this.clearProduct();
 
     // If loaded as modal, dismiss after entering the order - then return to whereever we came from
     if (this.loadedAsModal) this.dismiss();
@@ -402,7 +404,8 @@ export class PlaceOrderPage {
       this.presentToast(this.orderCreated);
     }, err => {
       logger.error(CLASSNAME, JSON.stringify(err, null, 2));
-      this.loading.dismiss()
+      this.loading.dismiss();
+      this.clearProduct();
       this.presentToast(this.uploadError);
     });
   }
