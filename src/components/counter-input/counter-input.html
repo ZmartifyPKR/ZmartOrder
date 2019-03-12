@@ -1,7 +1,21 @@
-<button ion-button icon-only class="counter-icon" (click)="decrease()">
-  <ion-icon name="remove"></ion-icon>
-</button>
-<span class="counter-inner">{{counterValue}}</span>
-<button ion-button icon-only class="counter-icon" (click)="increase()">
+<ion-item>
+  <button ion-button icon-only class="counter-icon" (click)="decrease(100)">
+    <ion-icon name="remove">100</ion-icon>
+  </button>
+  <button ion-button icon-only class="counter-icon" (click)="decrease(10)">
+    <ion-icon name="remove">10</ion-icon>
+  </button>
+  <button ion-button icon-only class="counter-icon" (click)="decrease(1)">
+    <ion-icon name="remove"> </ion-icon>
+  </button>
+  <span class="counter-inner">{{counterValue}}</span>
+<button ion-button icon-only class="counter-icon" (click)="increase(1)">
   <ion-icon name="add"></ion-icon>
 </button>
+<button ion-button icon-only class="counter-icon" (click)="increase(10)">
+  <ion-icon name="add">10</ion-icon>
+</button>
+<button ion-button icon-only class="counter-icon" (click)="increase(100)">
+  <ion-icon name="add">100</ion-icon>
+</button>
+</ion-item>
