@@ -69,14 +69,14 @@ export class CounterInput implements ControlValueAccessor, OnChanges {
 
   registerOnTouched() {}
 
-  increase(delta) {
+  increase() {
     console.log('increase', this.counterValue, this.counterStep);
-    if (this.counterRangeMax > this.counterValue) this.counterValue = Number(this.counterValue) + Number(delta);
+    if (this.counterRangeMax > this.counterValue) this.counterValue = Number(this.counterValue) + Number(this.counterStep);
   }
 
-  decrease(delta) {
+  decrease() {
     console.log('decrease', this.counterValue, this.counterStep);
-    if (this.counterRangeMin < this.counterValue) this.counterValue = Number(this.counterValue) - Number(delta);
+    if (this.counterRangeMin < this.counterValue) this.counterValue = Number(this.counterValue) - Number(this.counterStep);
   }
 
   validate(c: FormControl) {
