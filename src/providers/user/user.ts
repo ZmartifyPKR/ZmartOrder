@@ -73,8 +73,10 @@ export class User {
 */
   public isAuthenticated() {
     return false;
+    /*
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return Date.now() < expiresAt;
+    */
   }
 
   getName() {
