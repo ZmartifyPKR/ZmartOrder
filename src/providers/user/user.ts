@@ -36,7 +36,7 @@ export class User {
 
     this._tokenLifeTime = this.getTokenLifetime();
     logger.debug(CLASSNAME, "tokenLifeTime", this._tokenLifeTime);
-    
+
     if (!this._tokenLifeTime) {
       // If not set, set it to default
       this._tokenLifeTime = TOKEN_LIFETIME;
@@ -72,6 +72,7 @@ export class User {
   }
 */
   public isAuthenticated() {
+    return false;
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return Date.now() < expiresAt;
   }
@@ -107,7 +108,7 @@ export class User {
     logger.debug(CLASSNAME,METHOD,JSON.stringify(this.getPictureProductId() == null,null,2));
     return (this.getPictureProductId() !== null)
   }
-  
+
   setTokenLifetime(tokenLifetime: number) {
     this.setStorageVariable('token_lifetime', tokenLifetime);
     this._tokenLifeTime = tokenLifetime;
@@ -175,6 +176,7 @@ export class User {
    */
   login(accountInfo: any) {
     const METHOD = "login()";
+
 
     return new Promise((resolve, reject) => {
       this.api.post('accounts/token/', accountInfo).subscribe((res: any) => {
